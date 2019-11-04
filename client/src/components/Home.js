@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import getFactory from '../utils/factory';
 import getWeb3 from '../utils/getWeb3'
-import { Card } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
+import Layout from './layout/Layout';
 
 class Home extends Component {
 
@@ -28,7 +29,7 @@ class Home extends Component {
     const campaigns = campaignsArr.map(address => {
       return {
         header: address,
-        description: <a>View Campaigns</a>,
+        description: <a>View Campaign</a>,
         fluid: true
       };
     });
@@ -37,9 +38,12 @@ class Home extends Component {
 
   render() {
       return (
-        <div>
+        <Layout header={"HeaderOne"}>
+          <div>
+            <h3>Open Campaigns</h3>
             {this.renderCampaigns(this.state.deployedCampaigns)}
-        </div>
+          </div>
+        </Layout>
       )
     }
 }
