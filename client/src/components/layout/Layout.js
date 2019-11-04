@@ -4,21 +4,9 @@ import { HeaderOne, HeaderTwo } from './Headers';
 
 function Header(props) {
   if (props.header === "HeaderOne"){
-    return (
-      <Container>
-        <HeaderOne/>
-        {props.children}
-        <h1>I'm a footer</h1>
-      </Container>
-    )
+    return <HeaderOne/>
   }
-  return(
-    <Container>
-      <HeaderTwo/>
-      {props.children}
-      <h1>I'm a footer</h1>
-    </Container>
-  )
+  return <HeaderTwo/>
 }
 
 export default (props) => {
