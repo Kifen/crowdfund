@@ -4,7 +4,7 @@ import getWeb3 from '../utils/getWeb3'
 import { Card, Button } from 'semantic-ui-react';
 import Layout from './layout/Layout';
 
-class Home extends Component {
+class Campaigns extends Component {
 
   constructor(props) {
     super(props);
@@ -48,4 +48,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default Campaigns
