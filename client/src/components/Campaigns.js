@@ -38,7 +38,7 @@ class Campaigns extends Component {
 
   render() {
       return (
-        <Layout header={"HeaderOne"}>
+        <Layout header={"HeaderOne"} active={"campaigns"}>
           <div>
             <h3>Open Campaigns</h3>
             {this.renderCampaigns(this.state.deployedCampaigns)}

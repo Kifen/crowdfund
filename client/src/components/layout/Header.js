@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Button, Segment } from 'semantic-ui-react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 
 export default class Headers extends Component{
@@ -8,8 +8,7 @@ export default class Headers extends Component{
     super(props)
 
     this.state = {
-      activeMenu: 'home',
-      page: ''
+      activeMenu: ''
     }
 
     this.renderHeader = this.renderHeader.bind(this);
@@ -18,58 +17,86 @@ export default class Headers extends Component{
     this.headerTwo = this.headerTwo.bind(this);
   }
 
-  renderHeader = (header) => {
-    if (header === "HeaderOne"){
-      return <div>{this.headerOne()}</div>
+  renderHeader = (props) => {
+    if (props.header === "HeaderOne"){
+      return <div>{this.headerOne(props.active)}</div>
     }
-    return <div>{this.headerTwo()}</div>
+    return <div>{this.headerTwo(props.active)}</div>
   }
 
   handleItemClick = (e, { name }) => {
     this.setState({ activeMenu: name, page: name })
   }
 
-  headerOne = () => {
+  headerOne = (active) => {
     return(
       <Menu style={{ marginTop: '10px' }}>
-        <Menu.Item name='crowdfund'
-         active={this.state.activeMenu === 'crowdfund'}
-         onClick={this.handleItemClick}
-        >
-        CrowdFund
-        </Menu.Item>
+
+        <Link to='/campaigns'>
+          <a>
+          <Menu.Item name='crowdfund'
+           active={active === 'crowdfund'}
+           onClick={this.handleItemClick}
+          >
+          CrowdFund
+          </Menu.Item>
+          </a>
+        </Link>
 
         <Menu.Menu position='right'>
+
+        <Link to='/campaigns'>
+          <a>
           <Menu.Item name='campaigns'
-          active={this.state.activeMenu === 'campaigns'}
+          active={active === 'campaigns'}
           onClick={this.handleItemClick}
           >
           Campaigns
           </Menu.Item>
-          <Menu.Item icon='add circle' primary>
-          </Menu.Item>
+          </a>
+        </Link>
+
+        <Link to='/campaigns/new'>
+          <a>
+          <Menu.Item icon='add circle' name='create'
+          primary
+          active={active === 'create'}
+          onClick={this.handleItemClick}/>
+          </a>
+        </Link>
+
         </Menu.Menu>
       </Menu>
     )
   };
 
-  headerTwo = () => {
+  headerTwo = (active) => {
     return(
       <Menu style={{ marginTop: '10px' }}>
-      <Menu.Item name='crowdfund'
-       active={this.state.activeMenu === 'crowdfund'}
-       onClick={this.handleItemClick}
-      >
-        CrowdFund
-        </Menu.Item>
+
+        <Link to='/campaigns'>
+          <a>
+          <Menu.Item name='crowdfund'
+           active={active === 'crowdfund'}
+           onClick={this.handleItemClick}
+          >
+          CrowdFund
+          </Menu.Item>
+          </a>
+        </Link>
 
         <Menu.Menu position='right'>
+
+        <Link to='/campaigns'>
+          <a>
           <Menu.Item name='campaigns'
-          active={this.state.activeMenu === 'campaigns'}
+          active={active === 'campaigns'}
           onClick={this.handleItemClick}
           >
           Campaigns
           </Menu.Item>
+          </a>
+        </Link>
         </Menu.Menu>
       </Menu>
     )
@@ -78,7 +105,7 @@ export default class Headers extends Component{
   render() {
     return(
       <div>
-        {this.renderHeader(this.props.header)}
+        {this.renderHeader(this.props)}
       </div>
     )
   }

@@ -53,7 +53,7 @@ createCampaign = async (e) => {
 
     return(
       <div>
-        <Layout header={"HeaderTwo"}>
+        <Layout header={"HeaderTwo"} active={"create"}>
        <Header as='h2' icon='bullhorn' content='Create a Campaign' />
           <Form onSubmit={this.createCampaign} error={!!this.state.errorMsg}>
             <Form.Field>
