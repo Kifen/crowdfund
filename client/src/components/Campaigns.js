@@ -3,6 +3,7 @@ import getFactory from '../utils/factory';
 import getWeb3 from '../utils/getWeb3'
 import { Card, Button } from 'semantic-ui-react';
 import Layout from './layout/Layout';
+import { Link } from 'react-router-dom';
 
 class Campaigns extends Component {
 
@@ -29,7 +30,11 @@ class Campaigns extends Component {
     const campaigns = campaignsArr.map(address => {
       return {
         header: address,
-        description: <a>View Campaign</a>,
+        description:(
+          <Link to={`/campaigns/${address}`}>
+            <a>View Campaign</a>
+          </Link>
+        ),
         fluid: true
       };
     });

@@ -30,7 +30,7 @@ export default class Headers extends Component{
 
   headerOne = (active) => {
     return(
-      <Menu style={{ marginTop: '10px' }}>
+      <Menu style={{ marginTop: '10px', marginBottom: '10px' }}>
 
         <Link to='/campaigns'>
           <a>
@@ -72,7 +72,7 @@ export default class Headers extends Component{
 
   headerTwo = (active) => {
     return(
-      <Menu style={{ marginTop: '10px' }}>
+      <Menu style={{ marginTop: '10px'}}>
 
         <Link to='/campaigns'>
           <a>

@@ -73,6 +73,19 @@ contract CrowdSource {
 
         request.recipient.transfer(request.value);
         request.complete = true;
+      }
 
-    }
+      function getSummary() public view returns(uint, uint, uint, uint, address) {
+        return(
+          minimumPledge,
+          address(this).balance,
+          requests.length,
+          contributorsCount,
+          manager
+          );
+      }
+
+      function getRequestsCount() public view returns(uint) {
+        return requests.length;
+      }
 }

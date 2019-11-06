@@ -5,6 +5,7 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 import App from './App';
 import Campaigns from './components/Campaigns'
+import Campaign from './components/Campaign'
 import NewCampaign from './components/NewCampaign';
 import * as serviceWorker from './serviceWorker';
 
@@ -14,6 +15,7 @@ const routing =  (
         <Switch>
           <Route exact path="/Campaigns" component={Campaigns} />
           <Route path="/campaigns/new" component={NewCampaign} />
+          <Route path="/campaigns/:address" component={Campaign} />
         </Switch>
         </div>
     </BrowserRouter>
