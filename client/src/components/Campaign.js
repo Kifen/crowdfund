@@ -20,10 +20,11 @@ class Campaign extends Component {
       valid: true
     }
 
-    this.renderCard = this.renderCard.bind(this);
+    this.renderCampaign = this.renderCampaign.bind(this);
+    this.fetchCampaign = this.fetchCampaign.bind(this);
   }
 
-  async componentDidMount() {
+  async fetchCampaign() {
     const factory = await getFactory();
     const web3 = await getWeb3();
     const arr = await factory.methods.getDeployedCampaigns().call();
@@ -43,7 +44,11 @@ class Campaign extends Component {
     }
   }
 
-  renderCard() {
+  componentDidMount() {
+    this.fetchCampaign()
+  }
+
+  renderCampaign() {
     const items = [
       {
         header: this.state.manager,
@@ -86,10 +91,10 @@ class Campaign extends Component {
         <Header as='h3' block>Campaign: {this.state.address}</Header>
           <Grid>
             <Grid.Column width={10}>
-              {this.renderCard()}
+              {this.renderCampaign()}
             </Grid.Column>
             <Grid.Column width={6}>
-              <ContributeForm address={this.state.address}/>
+              <ContributeForm address={this.state.address} updatecampaign={this.fetchCampaign}/>
             </Grid.Column>
           </Grid>
         </Layout>

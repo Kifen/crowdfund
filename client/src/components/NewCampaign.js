@@ -14,12 +14,12 @@ class NewCampaign extends Component {
       loading: false,
       toCampaigns: false
     }
-    this.setPledge = this.setPledge.bind(this);
+    this.setMinimumPledge = this.setMinimumPledge.bind(this);
     this.createCampaign = this.createCampaign.bind(this);
     this.gotoCampaigns = this.gotoCampaigns.bind(this);
   }
 
-setPledge(e) {
+setMinimumPledge(e) {
   this.setState({minimumPledge: e.target.value});
 }
 
@@ -62,7 +62,7 @@ createCampaign = async (e) => {
                 label='wei'
                 labelPosition='right'
                 value={this.state.minimumPledge}
-                onChange={this.setPledge}
+                onChange={this.setMinimumPledge}
               />
             </Form.Field>
             <Message error header='Oops!' content={this.state.errorMsg}/>
