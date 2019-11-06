@@ -9,7 +9,6 @@ export default (props) => {
     <Container>
       <Header header={props.header} active={props.active}/>
       {props.children}
-      <h1>I'm a footer</h1>
     </Container>
   )
 };
