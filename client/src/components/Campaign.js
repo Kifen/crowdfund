@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card, Grid, Header } from 'semantic-ui-react';
+import { Card, Grid, Header, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom'
 import Layout from './layout/Layout';
 import ContributeForm from './ContributeForm';
 import getFactory from '../utils/factory';
@@ -59,7 +60,7 @@ class Campaign extends Component {
       {
         header: this.state.minimumPledge,
         meta: 'Minimum Contribution (wei)',
-        description: 'You must contribute at least `(${this.state.minimumPledge})` to become an approver.'
+        description: `You must contribute at least ${this.state.minimumPledge} wei to become an approver.`
       },
       {
         header: this.state.numberOfRequests,
@@ -90,12 +91,25 @@ class Campaign extends Component {
         <Layout header={"HeaderOne"} active={""}>
         <Header as='h3' block>Campaign: {this.state.address}</Header>
           <Grid>
+          <Grid.Row>
             <Grid.Column width={10}>
               {this.renderCampaign()}
             </Grid.Column>
+
             <Grid.Column width={6}>
               <ContributeForm address={this.state.address} updatecampaign={this.fetchCampaign}/>
             </Grid.Column>
+          </Grid.Row>
+
+          <Grid.Row>
+            <Grid.Column>
+              <Link to={`/campaigns/${this.state.address}/requests`}>
+                <a>
+                  <Button primary>View Requests</Button>
+                </a>
+              </Link>
+            </Grid.Column>
+          </Grid.Row>
           </Grid>
         </Layout>
       </div>

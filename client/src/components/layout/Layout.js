@@ -1,6 +1,5 @@
 import React from 'react';
 import { Container } from 'semantic-ui-react';
-import { HeaderOne, HeaderTwo } from './Headers';
 import Header from './Header';
 
 

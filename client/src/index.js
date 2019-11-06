@@ -7,6 +7,8 @@ import App from './App';
 import Campaigns from './components/Campaigns'
 import Campaign from './components/Campaign'
 import NewCampaign from './components/NewCampaign';
+import Requests from './components/Requests';
+import RequestForm from './components/RequestForm';
 import * as serviceWorker from './serviceWorker';
 
 const routing =  (
@@ -15,7 +17,9 @@ const routing =  (
         <Switch>
           <Route exact path="/Campaigns" component={Campaigns} />
           <Route path="/campaigns/new" component={NewCampaign} />
-          <Route path="/campaigns/:address" component={Campaign} />
+          <Route exact path="/campaigns/:address" component={Campaign} />
+          <Route exact path="/campaigns/:address/requests" component={Requests} />
+          <Route exact path="/campaigns/:address/requests/new" component={RequestForm} />
         </Switch>
         </div>
     </BrowserRouter>

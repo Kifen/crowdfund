@@ -77,7 +77,7 @@ contract CrowdSource {
 
       function getSummary() public view returns(uint, uint, uint, uint, address) {
         return(
-          minimumPledge,
+        minimumPledge,
           address(this).balance,
           requests.length,
           contributorsCount,
