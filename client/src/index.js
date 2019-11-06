@@ -12,7 +12,7 @@ const routing =  (
     <BrowserRouter>
         <div>
         <Switch>
-          <Route exact path="/Campaigns" component={Campaigns} />
+          <Route path="/Campaigns" component={Campaigns} />
           <Route path="/campaigns/new" component={NewCampaign} />
         </Switch>
         </div>

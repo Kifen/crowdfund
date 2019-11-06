@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Button } from 'semantic-ui-react';
+import { Menu, Button, Segment } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 
 
@@ -8,7 +8,7 @@ export default class Headers extends Component{
     super(props)
 
     this.state = {
-      activeMenu: '',
+      activeMenu: 'home',
       page: ''
     }
 
