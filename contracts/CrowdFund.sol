@@ -1,11 +1,11 @@
+pragma experimental ABIEncoderV2;
 pragma solidity >=0.4.22 <0.7.0;
 
-
-contract CrowdSourceFactory {
+contract CrowdFundFactory {
     address[] public deployedCampaigns;
 
     function createCampaign(uint _minPledge) public payable{
-        address newCampaign = address(new CrowdSource(_minPledge, msg.sender));
+        address newCampaign = address(new CrowdFund(_minPledge, msg.sender));
         deployedCampaigns.push(newCampaign);
     }
 
@@ -14,7 +14,7 @@ contract CrowdSourceFactory {
     }
 }
 
-contract CrowdSource {
+contract CrowdFund {
     struct Request {
         string description;
         uint value;
@@ -85,7 +85,27 @@ contract CrowdSource {
           );
       }
 
-      function getRequestsCount() public view returns(uint) {
+      function getRequestsCount() public view returns(uint){
         return requests.length;
+      }
+
+      function getRequests(uint[] memory indexes) public view returns(string[] memory, uint[] memory,
+        address payable[] memory, bool[] memory, uint[] memory) {
+
+        string[] memory desc = new string[](indexes.length);
+        uint[] memory value = new uint[](indexes.length);
+        address payable[] memory addrs = new address payable[](indexes.length);
+        bool[] memory complete = new bool[](indexes.length);
+        uint[] memory approvalCount = new uint[](indexes.length);
+
+        for(uint i = 0; i < indexes.length; i++) {
+          Request storage request = requests[indexes[i]];
+          desc[i] = request.description;
+          value[i] = request.value;
+          addrs[i] = request.recipient;
+          complete[i] = request.complete;
+          approvalCount[i] = request.approvalCount;
+        }
+        return (desc, value, addrs, complete, approvalCount);
       }
 }

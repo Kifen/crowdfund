@@ -1,5 +1,5 @@
 import getWeb3 from './getWeb3';
-import CrowdFund from '../contracts/CrowdSource.json'
+import CrowdFund from '../contracts/CrowdFund.json'
 
 export default async (address) => {
   const web3 = await getWeb3();

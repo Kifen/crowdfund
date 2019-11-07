@@ -3,7 +3,7 @@ import { Form, Input, Button, Message, Header } from 'semantic-ui-react';
 import CrowdFundContract from '../utils/crowdfund';
 import getWeb3 from '../utils/getWeb3';
 import Layout from './layout/Layout';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Notification from './Notification'
 
 class RequestForm extends Component {
@@ -26,7 +26,7 @@ class RequestForm extends Component {
   }
 
   async onSubmit(e) {
-    this.setState({loading: true, errorMsg: ""})
+    this.setState({loading: true, errorMsg: "", visible: false})
     e.preventDefault()
     try {
       const web3 = await getWeb3();

@@ -1,5 +1,5 @@
-var CrowdSourceFactory = artifacts.require("./CrowdSourceFactory");
+var CrowdFundFactory = artifacts.require("./CrowdFundFactory");
 
 module.exports = function(deployer) {
-  deployer.deploy(CrowdSourceFactory);
+  deployer.deploy(CrowdFundFactory);
 };

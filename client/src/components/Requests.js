@@ -13,13 +13,21 @@ constructor(props){
 }
 
 async renderRequests() {
+  let arr = []
   const web3 = await getWeb3()
-  const contract = CrowdFundContract(this.props.match.params.address);
+  const contract = await CrowdFundContract(this.props.match.params.address);
+  const requestCount = await contract.methods.getRequestsCount().call();
 
+  for (let i= 0; i < requestCount; i++){
+      arr.push(i)
+  }
+  const requests = await contract.methods.getRequests(arr).call();
+  console.log(requests);
 }
 
   render() {
     const { address } = this.props.match.params;
+    this.renderRequests()
     return(
       <Layout header={'HeaderOne'}>
         <Link to={`/campaigns/${address}/requests/new`}>

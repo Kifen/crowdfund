@@ -5,7 +5,6 @@ import Layout from './layout/Layout';
 import ContributeForm from './ContributeForm';
 import getFactory from '../utils/factory';
 import getWeb3 from '../utils/getWeb3'
-import CrowdFund from '../contracts/CrowdSource.json';
 import CrowdFundContract from '../utils/crowdfund';
 
 class Campaign extends Component {
