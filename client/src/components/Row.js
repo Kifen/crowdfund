@@ -5,26 +5,25 @@ import getWeb3 from '../utils/getWeb3';
 
 class Row extends Component {
 
-  async onApprove() {
+  onApprove = async () => {
     const web3 = await getWeb3()
-    const [account] = await web3.eth.getAccounts()
-    const contract = await CrowdFundContract(this.state.address);
-    console.log(contract);
-    await contract.methods.approveRequest(this.state.index).send({from: account})
+    const accounts = await web3.eth.getAccounts()
+    const contract = await CrowdFundContract(this.props.address);
+    await contract.methods.approveRequest(this.props.index).send({from: accounts[0]})
     this.props.refreshTable();
   }
 
-  async onFinalize() {
+  onFinalize = async () => {
     const web3 = await getWeb3()
-    const [account] = await web3.eth.getAccounts()
-    const contract = await CrowdFundContract(this.state.address);
-    console.log(contract);
-    await contract.methods.approveRequest(this.state.index).send({from: account})
+    const accounts = await web3.eth.getAccounts()
+    const contract = await CrowdFundContract(this.props.address);
+    await contract.methods.finalizeRequest(this.props.index).send({from: accounts[0]})
     this.props.refreshTable();
   }
 
-  renderRow(index, desc, amount, recipient, approvalCount, contributorsCount, address, complete, ready) {
-    let state = this.state
+  render() {
+    const { index, desc, amount, recipient, approvalCount, contributorsCount, address, complete } = this.props;
+    const ready = approvalCount > contributorsCount/2;
     return(
       <Table.Row disabled={complete} positive={ready && !complete}>
         <Table.Cell>{index + 1}</Table.Cell>
@@ -40,16 +39,10 @@ class Row extends Component {
         <Table.Cell>
         {complete ? null : (
           <Button color="teal" basic onClick={this.onFinalize}>Finalize</Button>
-        )}  
+        )}
         </Table.Cell>
       </Table.Row>
     )
-  }
-
-  render() {
-    const { index, desc, amount, recipient, approvalCount, contributorsCount, address, complete } = this.props;
-    const ready = approvalCount > approvalCount/2;
-    return this.renderRow(index, desc, amount, recipient, approvalCount, contributorsCount, address, complete, ready)
   }
 }
 

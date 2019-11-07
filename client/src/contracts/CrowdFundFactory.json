@@ -10399,15 +10399,15 @@
     "version": "0.5.8+commit.23d335f2.Emscripten.clang"
   },
   "networks": {
-    "1573154502674": {
+    "1573162394087": {
       "events": {},
       "links": {},
-      "address": "0xD7f14290fA83D0837e572DC70Ed19130B4DD3d94",
-      "transactionHash": "0x95945d5966f0bb9c5fd161b2de8f0ade5de87f91b87102d8d05272aec24e69b5"
+      "address": "0x35562C028b5b4B9bA35d7D0997584bc4A8e5b645",
+      "transactionHash": "0x76a3e7dbdc69f97701064d7cbbd2074a31ff1708d18940c0084c232dd3ffa947"
     }
   },
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-07T19:23:01.598Z",
+  "updatedAt": "2019-11-07T21:34:31.938Z",
   "devdoc": {
     "methods": {}
   },

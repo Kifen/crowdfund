@@ -16,7 +16,8 @@ constructor(props){
     complete: [],
     approvalCount: [],
     contributorsCount: '',
-    address: ''
+    address: '',
+    requestCount: ''
   }
   this.getRequests = this.getRequests.bind(this);
   this.renderRows = this.renderRows.bind(this);
@@ -42,7 +43,8 @@ async getRequests() {
      recipient: requests[2],
      complete: requests[3],
      approvalCount: requests[4],
-     contributorsCount: contributorsCount
+     contributorsCount: contributorsCount,
+     requestCount: requestCount
    });
 }
 
@@ -96,6 +98,7 @@ componentDidMount() {
         </Table.Header>
         <Table.Body>{this.renderRows()}</Table.Body>
       </Table>
+      <div>{this.state.requestCount} requests found</div>
       </Layout>
     )
   }
