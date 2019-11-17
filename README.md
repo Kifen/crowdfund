@@ -1,5 +1,5 @@
 # crowdfund
-##### A dapp developed to replicate the services of **[kickstarter.com](https://www.kickstarter.com/).
+##### A dapp developed to replicate the services of [kickstarter.com](https://www.kickstarter.com/).
 
 **CrowdFund** was written to replicate where **kickstarter**, but with some added features. 
 
